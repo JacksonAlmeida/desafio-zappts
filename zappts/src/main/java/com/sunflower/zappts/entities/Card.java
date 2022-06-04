@@ -1,14 +1,11 @@
 package com.sunflower.zappts.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.sunflower.zappts.entities.enums.CardsStatus;
@@ -22,7 +19,7 @@ public class Card implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String name;
 	private String edition;
 	private String idioma;
@@ -30,9 +27,6 @@ public class Card implements Serializable {
 
 	private Integer cardsStatus;
 
-	@ManyToMany(mappedBy = "cards")
-	private Set<Player> players = new HashSet<>();
-	
 	public Card() {
 	}
 
