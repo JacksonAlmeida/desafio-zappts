@@ -3,6 +3,9 @@ package com.sunflower.zappts.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -41,5 +44,25 @@ public class CardService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DatabaseException(e.getMessage());
 		}
+	}
+
+	public Card update(Long id, Card obj) {
+		try {
+			Card entity = cardRepository.getOne(id);
+			updateData(entity, obj);
+			return cardRepository.save(entity);
+		} catch (EntityNotFoundException e) {
+			e.printStackTrace();
+			throw new ResourceNotFoundException(id);
+		}
+	}
+
+	public void updateData(Card entity, Card obj) {
+		entity.setName(obj.getName());
+		entity.setEdition(obj.getEdition());
+		entity.setIdioma(obj.getIdioma());
+		entity.setPrice(obj.getPrice());
+		entity.setCardsStatus(obj.getCardsStatus());
+		cardRepository.save(entity);
 	}
 }

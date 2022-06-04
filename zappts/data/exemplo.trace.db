@@ -1,3 +1,6 @@
 2022-06-04 09:36:51 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM TB_PLAYER_CARD TB_LIST_CARD_PLAYER [*]TB_LIST_CARD_PLAYER"; SQL statement:
 SELECT * FROM TB_PLAYER_CARD TB_LIST_CARD_PLAYER TB_LIST_CARD_PLAYER [42000-212]
+2022-06-04 14:41:46 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]TB_CARD"; expected "TRUNCATE"; SQL statement:
+TB_CARD [42001-212]

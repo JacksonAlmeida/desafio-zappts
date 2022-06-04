@@ -23,7 +23,7 @@ public class Card implements Serializable {
 	private String name;
 	private String edition;
 	private String idioma;
-	private double price;
+	private Double price;
 
 	private Integer cardsStatus;
 
@@ -84,7 +84,7 @@ public class Card implements Serializable {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
