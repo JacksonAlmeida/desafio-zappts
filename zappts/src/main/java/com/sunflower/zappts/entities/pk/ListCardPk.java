@@ -11,14 +11,14 @@ import com.sunflower.zappts.entities.Card;
 import com.sunflower.zappts.entities.Player;
 
 @Embeddable
-public class ListCardPk implements Serializable{
+public class ListCardPk implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
 	@JoinColumn(name = "card_id")
 	private Card card;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "player_id")
 	private Player player;

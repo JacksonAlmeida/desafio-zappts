@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sunflower.zappts.entities.pk.ListCardPk;
 
 @Entity
@@ -43,6 +44,7 @@ public class ListCard implements Serializable {
 		id.setCard(card);
 	}
 
+	@JsonIgnore
 	public Player getPlayer() {
 		return id.getPlayer();
 	}

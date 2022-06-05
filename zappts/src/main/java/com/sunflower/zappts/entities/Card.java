@@ -1,11 +1,15 @@
 package com.sunflower.zappts.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.sunflower.zappts.entities.enums.CardsStatus;
@@ -26,6 +30,9 @@ public class Card implements Serializable {
 	private Double price;
 
 	private Integer cardsStatus;
+
+	@OneToMany(mappedBy = "id.player", fetch = FetchType.EAGER)
+	private Set<ListCard> listPlayers = new HashSet<>();
 
 	public Card() {
 	}
@@ -86,6 +93,14 @@ public class Card implements Serializable {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public Set<Player> getPlayes() {
+		Set<Player> set = new HashSet<>();
+		for (ListCard x : listPlayers) {
+			set.add(x.getPlayer());
+		}
+		return set;
 	}
 
 }

@@ -11,6 +11,7 @@ import com.sunflower.zappts.entities.Card;
 import com.sunflower.zappts.entities.ListCard;
 import com.sunflower.zappts.entities.Player;
 import com.sunflower.zappts.entities.enums.CardsStatus;
+import com.sunflower.zappts.entities.pk.ListCardPk;
 import com.sunflower.zappts.entities.repositories.CardRepository;
 import com.sunflower.zappts.entities.repositories.ListCardRepository;
 import com.sunflower.zappts.entities.repositories.PlayerRepository;
@@ -37,8 +38,8 @@ public class TestConfig implements CommandLineRunner {
 		Card card3 = new Card(4, "Triss", "4 edicao", "ingles", CardsStatus.NOLAMINATED, 15.05);
 		cardRepository.saveAll(Arrays.asList(card, card1, card2, card3));
 
-		Player p1 = new Player(1, "Jackson Almeida");
-		Player p2 = new Player(2, "Elisama Melo");
+		Player p1 = new Player(1, "Jackson Almeida", "123456");
+		Player p2 = new Player(2, "Elisama Melo", "123456");
 		playerRepository.saveAll(Arrays.asList(p1, p2));
 
 		ListCard l1 = new ListCard(p1, card, 1);
