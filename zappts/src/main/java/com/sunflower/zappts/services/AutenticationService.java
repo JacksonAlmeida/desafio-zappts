@@ -16,7 +16,7 @@ public class AutenticationService implements UserDetailsService {
 
 	@Autowired
 	private PlayerRepository playerRepository;
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Player> player = playerRepository.findByname(username);

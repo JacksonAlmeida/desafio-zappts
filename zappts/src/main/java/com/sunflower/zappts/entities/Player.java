@@ -22,7 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tb_player")
-public class Player implements Serializable, UserDetails{
+public class Player implements Serializable, UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,10 +33,10 @@ public class Player implements Serializable, UserDetails{
 	private String name;
 
 	private String password;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Role> roles = new ArrayList<>();
-	
+
 	@Transient
 	@OneToMany(mappedBy = "id.card")
 	private Set<ListCard> listCards = new HashSet<>();
@@ -65,7 +65,7 @@ public class Player implements Serializable, UserDetails{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}

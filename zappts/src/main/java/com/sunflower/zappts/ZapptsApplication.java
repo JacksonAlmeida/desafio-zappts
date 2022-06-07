@@ -8,6 +8,6 @@ public class ZapptsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ZapptsApplication.class, args);
-	}
 
+	}
 }

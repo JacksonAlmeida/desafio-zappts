@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,9 @@ public class PlayerResource {
 	@Autowired
 	private PlayerService playerService;
 
+	@Autowired
+	private PasswordEncoder encoder;
+
 	@GetMapping
 	public ResponseEntity<List<Player>> findAll() {
 		List<Player> list = playerService.findAll();
@@ -39,6 +43,7 @@ public class PlayerResource {
 
 	@PostMapping(value = "/newplayer")
 	public ResponseEntity<Player> save(@RequestBody Player obj) {
+		obj.setPassword(encoder.encode(obj.getPassword()));
 		obj = playerService.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
